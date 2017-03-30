@@ -24,26 +24,30 @@ public class Controller {
 
 
         Random random = new Random();
-        int fibonacci = random.nextInt(100000);
+        int fibonacci = random.nextInt(40);
         int factorial = 12;//random.nextInt(12);
         int collatz = random.nextInt(100000);
 
 
-        calculateFibonacci(0, 1, fibonacci);
+        calculateAllFibonacci(fibonacci);
         calculateFactorial(factorial);
         calculateCollatz(collatz);
     }
 
-    private void calculateFibonacci(int n1, int n2, int endpoint) {
-        list_Fibo.getItems().add(n1);
+    private void calculateAllFibonacci(int max) {
+        for (int i = 0; i < max; i++) {
+            list_Fibo.getItems().add("Fibonacci " + i + ": " + calculateFibonacci(i));
+        }
+    }
 
-        if (n1 >= endpoint) {
-            return;
+    private int calculateFibonacci(int n) {
+        if ((n == 0) || (n == 1)) {
+            return n;
         }
 
-        int solution = n1 + n2;
+        int outcome = calculateFibonacci(n - 1) + calculateFibonacci(n - 2);
 
-        calculateFibonacci(n2, solution, endpoint);
+        return outcome;
 
     }
 
