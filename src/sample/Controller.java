@@ -48,7 +48,6 @@ public class Controller {
         int outcome = calculateFibonacci(n - 1) + calculateFibonacci(n - 2);
 
         return outcome;
-
     }
 
     private int calculateFactorial(int n) {
